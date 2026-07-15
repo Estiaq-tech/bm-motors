@@ -15,13 +15,13 @@
 
 const BIKES = [
   {
-    name_en: "Bajaj Pulsar 150",
-    name_bn: "বাজাজ পালসার ১৫০",
-    brand: "Bajaj",
+    name_en: "Yamaha FZs V4",
+    name_bn: "ইয়ামাহা এফজেডএস ভি৪ ",
+    brand: "Yamaha",
     type: "Sports Commuter",
     engine: "149 cc",
     condition: "New",
-    image: "images/YamahaFZsV4.jpg",
+    image: "images/YamahaFZsV4.jpeg",
     available: true,
     specs_en: ["149 cc engine", "Electric & kick start", "Disc brake (front)", "Great mileage"],
     specs_bn: ["১৪৯ সিসি ইঞ্জিন", "ইলেকট্রিক ও কিক স্টার্ট", "ডিস্ক ব্রেক (সামনে)", "ভালো মাইলেজ"]
