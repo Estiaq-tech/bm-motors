@@ -7,8 +7,8 @@
 
 const CONFIG = {
   shopName: "BM Motors",
-  phoneDisplay: "01979-682738",      // shown on the site
-  phoneCall: "8801979682738",        // used for tap-to-call & WhatsApp & imo
+  phoneDisplay: "+8801739-749283",      // shown on the site
+  phoneCall: "8801739749283",        // used for tap-to-call & WhatsApp & imo
   facebook: "https://www.facebook.com/BM.Motors.Bike.Sel.And.Servicing.Rubel.01979682738",
   addressEn: "Asmania Bazar, Titas, Cumilla, Bangladesh",
   addressBn: "আছমানিয়া বাজার, তিতাস, কুমিল্লা, বাংলাদেশ",
