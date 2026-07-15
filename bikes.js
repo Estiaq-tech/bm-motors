@@ -21,7 +21,7 @@ const BIKES = [
     type: "Sports Commuter",
     engine: "149 cc",
     condition: "New",
-    image: "",
+    image: "images/YamahaFZsV4.jpg",
     available: true,
     specs_en: ["149 cc engine", "Electric & kick start", "Disc brake (front)", "Great mileage"],
     specs_bn: ["১৪৯ সিসি ইঞ্জিন", "ইলেকট্রিক ও কিক স্টার্ট", "ডিস্ক ব্রেক (সামনে)", "ভালো মাইলেজ"]
@@ -87,3 +87,4 @@ const BIKES = [
     specs_bn: ["৯৭ সিসি ইঞ্জিন", "খুব বেশি মাইলেজ", "হালকা ওজন", "চালাতে সহজ"]
   }
 ];
+
