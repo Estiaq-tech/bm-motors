@@ -263,13 +263,6 @@
       applyLang();
     });
 
-    var navToggle = document.getElementById("navToggle");
-    var nav = document.getElementById("nav");
-    navToggle.addEventListener("click", function () { nav.classList.toggle("open"); });
-    nav.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () { nav.classList.remove("open"); });
-    });
-
     document.getElementById("modalClose").addEventListener("click", closeModal);
     document.getElementById("modal").addEventListener("click", function (e) {
       if (e.target.id === "modal") closeModal();
