@@ -69,6 +69,14 @@
     return '<div class="bike-meta">' + html + "</div>";
   }
 
+  /* Price line. If the bike has a price it is shown; if not,
+     the customer is invited to contact the shop instead. */
+  function priceLine(b) {
+    var p = t(b.price, b.price_bn || b.price);
+    if (p) return '<div class="bike-price">' + p + "</div>";
+    return '<div class="bike-price ask">' + t("Contact for price", "দামের জন্য যোগাযোগ করুন") + "</div>";
+  }
+
   /* Returns a bike's photo list. Accepts either the new
      photos: ["a.jpg","b.jpg"] list, or a single image: "a.jpg". */
   function photosOf(b) {
@@ -163,9 +171,11 @@
             '<span class="bike-brand">' + b.brand + "</span>" +
             '<h3 class="bike-name">' + name + "</h3>" +
             metaPills(b) +
+            priceLine(b) +
             '<div class="bike-actions">' +
               '<button class="btn btn-ghost" data-detail="' + idx + '">' + t("Details", "বিস্তারিত") + "</button>" +
-              '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + waLink(waMsg) + '">💬 ' + t("Price", "দাম") + "</a>" +
+              '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + waLink(waMsg) + '">💬 ' +
+                (b.price ? t("Contact", "যোগাযোগ") : t("Price", "দাম")) + "</a>" +
             "</div>" +
           "</div>" +
         "</article>"
@@ -193,9 +203,15 @@
       '<span class="m-brand">' + b.brand + "</span>" +
       "<h3>" + name + "</h3>" +
       metaPills(b) +
+      priceLine(b) +
       "<ul class='spec-list'>" + specs.map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ul>" +
-      '<div class="modal-note">' + t("💡 Prices are not listed online. Tap below to contact the shop for the best price.",
-        "💡 দাম অনলাইনে দেওয়া নেই। সেরা দামের জন্য নিচের বাটনে ক্লিক করে দোকানে যোগাযোগ করুন।") + "</div>" +
+      '<div class="modal-note">' +
+        (b.price
+          ? t("💡 Price is negotiable. Tap below to contact the shop about this bike.",
+              "💡 দাম আলোচনা সাপেক্ষে। এই বাইকটির ব্যাপারে জানতে নিচের বাটনে ক্লিক করুন।")
+          : t("💡 Price is not listed online. Tap below to contact the shop for the best price.",
+              "💡 দাম অনলাইনে দেওয়া নেই। সেরা দামের জন্য নিচের বাটনে ক্লিক করে দোকানে যোগাযোগ করুন।")) +
+      "</div>" +
       '<div class="contact-btns">' +
         '<a class="c-wa" target="_blank" rel="noopener" href="' + waLink(waMsg) + '">💬 WhatsApp</a>' +
         '<a class="c-call" href="tel:+' + CONFIG.phoneCall + '">📞 ' + t("Call", "কল") + "</a>" +

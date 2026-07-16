@@ -18,6 +18,13 @@
                 in the Details popup with the ‹ › arrows.
               - Only one photo? Just write one:  photos: ["images/x.jpg"]
               - No photos yet? Write:            photos: []
+   • price:   OPTIONAL. e.g. "৳ 1,85,000" or "৳ 1,85,000 (negotiable)".
+              - Write a price and it is shown on the bike's card.
+              - Leave it EMPTY ("") and the card instead says
+                "Contact for price" — the customer must message you.
+              You can price some bikes and leave others blank.
+     price_bn: the same price in Bangla digits, e.g. "৳ ১,৮৫,০০০".
+              Optional — if empty, the English price is used for both.
    • year:    model/registration year, e.g. "2019".  "" hides it.
    • mileage: how far a used bike has run, e.g. "18,500 km".  "" hides it.
    • owner:   e.g. "1st owner", "2nd owner".  "" hides it.
@@ -35,6 +42,8 @@ const BIKES = [
     engine: "149 cc",
     condition: "Used - Excellent",
     photos: ["images/YamahaFZsV4.jpeg","images/fzs2.jpeg","images/fzs3.jpeg","images/fzs4.jpeg","images/fzs5.jpeg"],
+    price: "",
+    price_bn: "",
     year: "2025",
     mileage: "14,000 km",
     owner: "1st owner",
@@ -50,6 +59,8 @@ const BIKES = [
     engine: "150 cc",
     condition: "New",
     photos: ["images/gixerfiabs.jpeg"],
+    price: "৳ 1,85,000",
+    price_bn: "৳ ১,৮৫,০০০",
     year: "2022",
     mileage: "",
     owner: "On test",
