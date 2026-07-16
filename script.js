@@ -50,10 +50,90 @@
     });
   }
 
-  function bikeImg(b, big) {
-    if (b.image) return '<img src="' + b.image + '" alt="' + b.name_en + '" onerror="this.style.display=\'none\'">';
-    return "🏍️";
+  /* Builds the little grey info pills. The mileage pill only appears
+     if that bike has a mileage value, so new bikes stay clean. */
+  function metaPills(b) {
+    var html = "";
+    if (b.year) {
+      html += '<span class="pill pill-year">📅 ' + b.year + "</span>";
+    }
+    html +=
+      '<span class="pill">' + b.engine + "</span>" +
+      '<span class="pill">' + b.type + "</span>" +
+      '<span class="pill">' + b.condition + "</span>";
+    if (b.mileage) {
+      html += '<span class="pill pill-km">⏱️ ' + b.mileage + "</span>";
+    }
+    if (b.owner) {
+      html += '<span class="pill pill-owner">👤 ' + t(b.owner, b.owner_bn || b.owner) + "</span>";
+    }
+    return '<div class="bike-meta">' + html + "</div>";
   }
+
+  /* Returns a bike's photo list. Accepts either the new
+     photos: ["a.jpg","b.jpg"] list, or a single image: "a.jpg". */
+  function photosOf(b) {
+    if (b.photos && b.photos.length) return b.photos.filter(Boolean);
+    if (b.image) return [b.image];
+    return [];
+  }
+
+  /* Card thumbnail: first photo + a 📷 count badge if there are more. */
+  function bikeImg(b) {
+    var ph = photosOf(b);
+    if (!ph.length) return "🏍️";
+    var badge = ph.length > 1 ? '<span class="photo-count">📷 ' + ph.length + "</span>" : "";
+    return '<img src="' + ph[0] + '" alt="" onerror="this.style.display=\'none\'">' + badge;
+  }
+
+  /* Modal gallery: big photo + clickable thumbnails + ‹ › arrows. */
+  function gallery(b) {
+    var ph = photosOf(b);
+    if (!ph.length) return '<div class="modal-img">🏍️</div>';
+
+    var main = '<div class="modal-img" id="galMain">' +
+      '<img id="galImg" src="' + ph[0] + '" alt="" onerror="this.style.visibility=\'hidden\'">' +
+      (ph.length > 1
+        ? '<button class="gal-arrow gal-prev" id="galPrev" aria-label="Previous photo">‹</button>' +
+          '<button class="gal-arrow gal-next" id="galNext" aria-label="Next photo">›</button>' +
+          '<span class="gal-count" id="galCount">1 / ' + ph.length + "</span>"
+        : "") +
+      "</div>";
+
+    var thumbs = "";
+    if (ph.length > 1) {
+      thumbs = '<div class="gal-thumbs" id="galThumbs">' +
+        ph.map(function (src, i) {
+          return '<button class="gal-thumb' + (i === 0 ? " active" : "") + '" data-i="' + i + '">' +
+                 '<img src="' + src + '" alt="" onerror="this.style.visibility=\'hidden\'"></button>';
+        }).join("") + "</div>";
+    }
+    return main + thumbs;
+  }
+
+  /* Wires up the gallery clicks/arrows after the modal is in the DOM. */
+  function initGallery(b) {
+    var ph = photosOf(b);
+    if (ph.length < 2) return;
+    var i = 0;
+    var img = document.getElementById("galImg");
+    var count = document.getElementById("galCount");
+    var thumbs = document.querySelectorAll(".gal-thumb");
+
+    function show(n) {
+      i = (n + ph.length) % ph.length;   // wraps around both ways
+      img.src = ph[i];
+      count.textContent = i + 1 + " / " + ph.length;
+      thumbs.forEach(function (tb, k) { tb.classList.toggle("active", k === i); });
+    }
+    document.getElementById("galPrev").addEventListener("click", function () { show(i - 1); });
+    document.getElementById("galNext").addEventListener("click", function () { show(i + 1); });
+    thumbs.forEach(function (tb) {
+      tb.addEventListener("click", function () { show(parseInt(tb.getAttribute("data-i"), 10)); });
+    });
+    galleryKeys = show;
+  }
+  var galleryKeys = null;
 
   function renderBikes() {
     var grid = document.getElementById("bikeGrid");
@@ -83,11 +163,7 @@
           '<div class="bike-body">' +
             '<span class="bike-brand">' + b.brand + "</span>" +
             '<h3 class="bike-name">' + name + "</h3>" +
-            '<div class="bike-meta">' +
-              '<span class="pill">' + b.engine + "</span>" +
-              '<span class="pill">' + b.type + "</span>" +
-              '<span class="pill">' + b.condition + "</span>" +
-            "</div>" +
+            metaPills(b) +
             '<div class="bike-actions">' +
               '<button class="btn btn-ghost" data-detail="' + idx + '">' + t("Details", "বিস্তারিত") + "</button>" +
               '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + waLink(waMsg) + '">💬 ' + t("Price", "দাম") + "</a>" +
@@ -114,14 +190,10 @@
       "আসসালামু আলাইকুম, বিএম মোটরস। আমি " + b.name_bn + " বাইকটির ব্যাপারে আগ্রহী। দাম ও বিস্তারিত জানাবেন।"
     );
     var body =
-      '<div class="modal-img">' + bikeImg(b, true) + "</div>" +
+      gallery(b) +
       '<span class="m-brand">' + b.brand + "</span>" +
       "<h3>" + name + "</h3>" +
-      '<div class="bike-meta" style="margin:.6rem 0">' +
-        '<span class="pill">' + b.engine + "</span>" +
-        '<span class="pill">' + b.type + "</span>" +
-        '<span class="pill">' + b.condition + "</span>" +
-      "</div>" +
+      metaPills(b) +
       "<ul class='spec-list'>" + specs.map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ul>" +
       '<div class="modal-note">' + t("💡 Prices are not listed online. Tap below to contact the shop for the best price.",
         "💡 দাম অনলাইনে দেওয়া নেই। সেরা দামের জন্য নিচের বাটনে ক্লিক করে দোকানে যোগাযোগ করুন।") + "</div>" +
@@ -131,8 +203,12 @@
       "</div>";
     document.getElementById("modalBody").innerHTML = body;
     document.getElementById("modal").hidden = false;
+    initGallery(b);
   }
-  function closeModal() { document.getElementById("modal").hidden = true; }
+  function closeModal() {
+    document.getElementById("modal").hidden = true;
+    galleryKeys = null;
+  }
 
   /* ---------- contact ---------- */
   function renderContact() {
@@ -175,7 +251,12 @@
     document.getElementById("modal").addEventListener("click", function (e) {
       if (e.target.id === "modal") closeModal();
     });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeModal();
+      if (!galleryKeys) return;
+      if (e.key === "ArrowLeft") document.getElementById("galPrev").click();
+      if (e.key === "ArrowRight") document.getElementById("galNext").click();
+    });
 
     renderFilters();
     applyLang(); // renders bikes + contact
