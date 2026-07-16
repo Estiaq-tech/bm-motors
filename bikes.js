@@ -40,6 +40,25 @@
 
 const BIKES = [
   {
+    name_en: "Gixxer Monotone",
+    name_bn: "জিক্সার মনোটোন",
+    brand: "Suzuki",
+    engine: "150 cc",
+    condition: "Used - Excellent",
+    photos: ["images/gixxermono.jpeg"],
+    price: "৳ 1,20,000",
+    price_bn: "৳ ১,২০,০০০",
+    year: "2020",
+    mileage: "29,000 km",
+    owner: "1st owner",
+    owner_bn: "১ম মালিক",
+    note: "",
+    note_bn: "",
+    available: true,
+    specs_en: ["150 cc engine", "2020 model", "1st owner", "Excellent condition"],
+    specs_bn: ["১৫০ সিসি ইঞ্জিন", "২০২০ মডেল", "১ম মালিক", "চমৎকার কন্ডিশন"]
+  },
+  {
     name_en: "FZs V4",
     name_bn: "এফজেডএস ভি৪",
     brand: "Suzuki",
@@ -59,7 +78,7 @@ const BIKES = [
     specs_bn: ["১৪৯ সিসি ইঞ্জিন", "ইলেকট্রিক ও কিক স্টার্ট", "ডিস্ক ব্রেক (সামনে)", "ভালো মাইলেজ"]
   },
   {
-    name_en: "Gixer Fi ABS Naked",
+    name_en: "Gixxer Fi ABS Naked",
     name_bn: "জিক্সার এফআই এবিএস",
     brand: "Suzuki",
     engine: "150 cc",

@@ -32,10 +32,13 @@ a{text-decoration:none;color:inherit}
 }
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:70px}
 .logo{display:flex;align-items:center;gap:.6rem}
+/* Shop logo. The source image is a circular emblem on a solid black
+   field, so a black round mark + `cover` crops the spare black sides
+   and frames the emblem cleanly. */
 .logo-mark{
-  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
-  background:var(--red);color:#fff;font-weight:800;font-size:1.1rem;letter-spacing:.5px;
-  box-shadow:0 6px 16px rgba(225,29,42,.35)
+  width:44px;height:44px;border-radius:50%;flex:0 0 44px;
+  background:#000;object-fit:cover;display:block;
+  box-shadow:0 4px 14px rgba(18,21,28,.28)
 }
 .logo-text{display:flex;flex-direction:column;font-weight:700;font-size:1.15rem;line-height:1.1}
 .logo-text small{font-weight:500;font-size:.66rem;color:var(--muted);letter-spacing:.3px}
