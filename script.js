@@ -59,7 +59,6 @@
     }
     html +=
       '<span class="pill">' + b.engine + "</span>" +
-      '<span class="pill">' + b.type + "</span>" +
       '<span class="pill">' + b.condition + "</span>";
     if (b.mileage) {
       html += '<span class="pill pill-km">⏱️ ' + b.mileage + "</span>";
