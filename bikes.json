@@ -95,22 +95,6 @@
         "স্মুথ ও নির্ভরযোগ্য",
         "আরামদায়ক রাইড"
       ]
-    },
-    {
-      "name_en": "Test bike 1",
-      "name_bn": "test",
-      "brand": "Honda",
-      "photos": [
-        "images/logo-square-1.png"
-      ],
-      "price": "100000",
-      "price_bn": "121212",
-      "year": "2029",
-      "engine": "150 cc",
-      "mileage": "5000",
-      "condition": "Used - Excellent",
-      "owner": "1st",
-      "available": true
     }
   ]
 }
