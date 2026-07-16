@@ -1,0 +1,119 @@
+# =====================================================================
+# BM MOTORS — Pages CMS configuration
+# This file describes the "Add bike" form shown at app.pagescms.org.
+# Editing it changes the form, not the website itself.
+# =====================================================================
+
+media:
+  input: images
+  output: images
+
+content:
+  - name: bikes
+    label: Bikes
+    type: file
+    path: bikes.json
+    icon: bike
+    fields:
+      - name: bikes
+        label: Bike list
+        type: object
+        list:
+          # Each bike is shown in the list by its English name
+          default: { name_en: "New bike" }
+        fields:
+          - name: name_en
+            label: Name (English)
+            type: string
+            required: true
+            description: e.g. Gixxer Monotone
+
+          - name: name_bn
+            label: Name (Bangla) / নাম
+            type: string
+            description: e.g. জিক্সার মনোটোন
+
+          - name: brand
+            label: Brand
+            type: select
+            options:
+              values: [Suzuki, Yamaha, Bajaj, Honda, TVS, Hero, Other]
+            default: Suzuki
+
+          - name: photos
+            label: Photos
+            type: image
+            list: true
+            description: First photo is shown on the card. Drag to reorder.
+
+          - name: price
+            label: Price (English digits)
+            type: string
+            description: 'e.g. ৳ 1,20,000 — LEAVE EMPTY to show "Contact for price"'
+
+          - name: price_bn
+            label: Price (Bangla digits)
+            type: string
+            description: e.g. ৳ ১,২০,০০০ — optional
+
+          - name: year
+            label: Year
+            type: string
+            description: e.g. 2020 — leave empty to hide
+
+          - name: engine
+            label: Engine
+            type: string
+            default: 150 cc
+
+          - name: mileage
+            label: Mileage / odometer
+            type: string
+            description: e.g. 29,000 km — leave empty for a brand-new bike
+
+          - name: condition
+            label: Condition
+            type: select
+            options:
+              values:
+                - New
+                - Used - Excellent
+                - Used - Good
+                - Used - Fair
+            default: Used - Good
+
+          - name: owner
+            label: Owner (English)
+            type: string
+            description: e.g. 1st owner — leave empty to hide
+
+          - name: owner_bn
+            label: Owner (Bangla)
+            type: string
+            description: e.g. ১ম মালিক — optional
+
+          - name: note
+            label: Note (English)
+            type: string
+            description: Yellow box, e.g. On test showroom paper — optional
+
+          - name: note_bn
+            label: Note (Bangla)
+            type: string
+            description: e.g. অন টেস্ট শোরুম পেপার — optional
+
+          - name: available
+            label: In stock
+            type: boolean
+            default: true
+            description: Turn OFF to show the bike as Sold
+
+          - name: specs_en
+            label: Bullet points (English)
+            type: string
+            list: true
+
+          - name: specs_bn
+            label: Bullet points (Bangla)
+            type: string
+            list: true

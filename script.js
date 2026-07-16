@@ -4,6 +4,7 @@
 
   var lang = localStorage.getItem("bm_lang") || "en";
   var activeBrand = "all";
+  var BIKES = [];   // filled from bikes.json before anything renders
 
   /* ---------- helpers ---------- */
   function t(en, bn) { return lang === "bn" ? bn : en; }
@@ -21,6 +22,7 @@
     });
     var lt = document.getElementById("langToggle");
     lt.textContent = lang === "bn" ? "English" : "বাংলা";
+    renderFilters();   // the "All" chip is translated too
     renderBikes();
     renderContact();
   }
@@ -274,7 +276,31 @@
       if (e.key === "ArrowRight") document.getElementById("galNext").click();
     });
 
-    renderFilters();
-    applyLang(); // renders bikes + contact
+    // Contact details, map and language don't depend on the bike list,
+    // so draw them straight away.
+    applyLang();
+
+    // The bike list lives in bikes.json (so the admin panel can edit it).
+    // Load it, then render. If it ever fails, say so plainly rather than
+    // leaving an empty page with no explanation.
+    var grid = document.getElementById("bikeGrid");
+    grid.innerHTML = '<p class="grid-msg">' + t("Loading bikes…", "বাইক লোড হচ্ছে…") + "</p>";
+
+    fetch("bikes.json?v=" + Date.now())
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        BIKES = (data && data.bikes) || [];
+        renderFilters();
+        renderBikes();
+      })
+      .catch(function (err) {
+        grid.innerHTML = '<p class="grid-msg">' +
+          t("Could not load the bike list. Please refresh the page.",
+            "বাইকের তালিকা লোড করা যায়নি। পেজটি রিফ্রেশ করুন।") + "</p>";
+        console.error("bikes.json failed to load:", err);
+      });
   });
 })();

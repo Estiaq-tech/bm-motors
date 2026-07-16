@@ -97,6 +97,7 @@ a{text-decoration:none;color:inherit}
 
 /* ===== BIKE GRID ===== */
 .bike-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.grid-msg{grid-column:1/-1;text-align:center;color:var(--muted);padding:2rem 0}
 .bike-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
   overflow:hidden;transition:.25s;display:flex;flex-direction:column}
 .bike-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
