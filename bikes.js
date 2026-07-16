@@ -35,7 +35,7 @@ const BIKES = [
     type: "Sports Commuter",
     engine: "149 cc",
     condition: "New",
-    photos: ["images/YamahaFZsV4.jpeg","images/fzs2","images/fzs3","images/fzs4","images/fzs5"],
+    photos: ["images/YamahaFZsV4.jpeg","images/fzs2.jpeg","images/fzs3.jpeg","images/fzs4.jpeg","images/fzs5.jpeg"],
     year: "2025",
     mileage: "14000",
     owner: "1st",
