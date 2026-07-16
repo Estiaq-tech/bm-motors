@@ -69,6 +69,12 @@
     return '<div class="bike-meta">' + html + "</div>";
   }
 
+  /* Optional highlighted note, e.g. papers / registration status. */
+  function noteLine(b) {
+    var n = t(b.note, b.note_bn || b.note);
+    return n ? '<div class="bike-note">📄 ' + n + "</div>" : "";
+  }
+
   /* Price line. If the bike has a price it is shown; if not,
      the customer is invited to contact the shop instead. */
   function priceLine(b) {
@@ -171,6 +177,7 @@
             '<span class="bike-brand">' + b.brand + "</span>" +
             '<h3 class="bike-name">' + name + "</h3>" +
             metaPills(b) +
+            noteLine(b) +
             priceLine(b) +
             '<div class="bike-actions">' +
               '<button class="btn btn-ghost" data-detail="' + idx + '">' + t("Details", "বিস্তারিত") + "</button>" +
@@ -203,6 +210,7 @@
       '<span class="m-brand">' + b.brand + "</span>" +
       "<h3>" + name + "</h3>" +
       metaPills(b) +
+      noteLine(b) +
       priceLine(b) +
       "<ul class='spec-list'>" + specs.map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ul>" +
       '<div class="modal-note">' +

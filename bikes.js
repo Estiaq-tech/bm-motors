@@ -29,6 +29,10 @@
    • mileage: how far a used bike has run, e.g. "18,500 km".  "" hides it.
    • owner:   e.g. "1st owner", "2nd owner".  "" hides it.
      owner_bn: the same in Bangla, e.g. "১ম মালিক". Optional.
+   • note:    OPTIONAL yellow highlight box for papers / registration
+              status, e.g. "On test showroom paper", "Papers up to date".
+              Leave "" to hide it.
+     note_bn: the same in Bangla. Optional.
    • condition: free text. "New", "Used - Excellent",
               "Used - Good", "Used - Fair".
    • available: true = shown as In stock, false = shown as Sold.
@@ -48,6 +52,8 @@ const BIKES = [
     mileage: "14,000 km",
     owner: "1st owner",
     owner_bn: "১ম মালিক",
+    note: "",
+    note_bn: "",
     available: true,
     specs_en: ["149 cc engine", "Electric & kick start", "Disc brake (front)", "Great mileage"],
     specs_bn: ["১৪৯ সিসি ইঞ্জিন", "ইলেকট্রিক ও কিক স্টার্ট", "ডিস্ক ব্রেক (সামনে)", "ভালো মাইলেজ"]
@@ -58,13 +64,22 @@ const BIKES = [
     brand: "Suzuki",
     engine: "150 cc",
     condition: "New",
-    photos: ["images/gixerfiabs.jpeg"],
+    photos: [
+      "images/gixerfiabs.jpeg",
+      "images/gixer2.jpeg",
+      "images/gixer3.jpeg",
+      "images/gixer4.jpeg",
+      "images/gixer5.jpeg",
+      "images/gixer6.jpeg"
+    ],
     price: "৳ 1,85,000",
     price_bn: "৳ ১,৮৫,০০০",
     year: "2022",
-    mileage: "",
+    mileage: "34,000 km",
     owner: "On test",
     owner_bn: "অন টেস্ট",
+    note: "On test showroom paper",
+    note_bn: "অন টেস্ট শোরুম পেপার",
     available: true,
     specs_en: ["150 cc engine", "Fuel injection & ABS", "Smooth & reliable", "Comfortable ride"],
     specs_bn: ["১৫০ সিসি ইঞ্জিন", "ফুয়েল ইনজেকশন ও এবিএস", "স্মুথ ও নির্ভরযোগ্য", "আরামদায়ক রাইড"]
