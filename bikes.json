@@ -4,19 +4,17 @@
       "name_en": "Gixxer Monotone",
       "name_bn": "জিক্সার মনোটোন",
       "brand": "Suzuki",
-      "engine": "150 cc",
-      "condition": "Used - Excellent",
       "photos": [
         "images/gixxermono.jpeg"
       ],
       "price": "৳ 1,20,000",
       "price_bn": "৳ ১,২০,০০০",
       "year": "2020",
+      "engine": "150 cc",
       "mileage": "29,000 km",
+      "condition": "Used - Excellent",
       "owner": "1st owner",
       "owner_bn": "১ম মালিক",
-      "note": "",
-      "note_bn": "",
       "available": true,
       "specs_en": [
         "150 cc engine",
@@ -35,8 +33,6 @@
       "name_en": "FZs V4",
       "name_bn": "এফজেডএস ভি৪",
       "brand": "Suzuki",
-      "engine": "149 cc",
-      "condition": "Used - Excellent",
       "photos": [
         "images/YamahaFZsV4.jpeg",
         "images/fzs2.jpeg",
@@ -44,14 +40,12 @@
         "images/fzs4.jpeg",
         "images/fzs5.jpeg"
       ],
-      "price": "",
-      "price_bn": "",
       "year": "2025",
+      "engine": "149 cc",
       "mileage": "14,000 km",
+      "condition": "Used - Excellent",
       "owner": "1st owner",
       "owner_bn": "১ম মালিক",
-      "note": "",
-      "note_bn": "",
       "available": true,
       "specs_en": [
         "149 cc engine",
@@ -70,8 +64,6 @@
       "name_en": "Gixxer Fi ABS Naked",
       "name_bn": "জিক্সার এফআই এবিএস",
       "brand": "Suzuki",
-      "engine": "150 cc",
-      "condition": "New",
       "photos": [
         "images/gixerfiabs.jpeg",
         "images/gixer2.jpeg",
@@ -83,7 +75,9 @@
       "price": "৳ 1,85,000",
       "price_bn": "৳ ১,৮৫,০০০",
       "year": "2022",
+      "engine": "150 cc",
       "mileage": "34,000 km",
+      "condition": "New",
       "owner": "On test",
       "owner_bn": "অন টেস্ট",
       "note": "On test showroom paper",
@@ -101,6 +95,22 @@
         "স্মুথ ও নির্ভরযোগ্য",
         "আরামদায়ক রাইড"
       ]
+    },
+    {
+      "name_en": "Test bike 1",
+      "name_bn": "test",
+      "brand": "Honda",
+      "photos": [
+        "images/logo-square-1.png"
+      ],
+      "price": "100000",
+      "price_bn": "121212",
+      "year": "2029",
+      "engine": "150 cc",
+      "mileage": "5000",
+      "condition": "Used - Excellent",
+      "owner": "1st",
+      "available": true
     }
   ]
 }
