@@ -95,6 +95,21 @@
         "স্মুথ ও নির্ভরযোগ্য",
         "আরামদায়ক রাইড"
       ]
+    },
+    {
+      "name_en": "TVs Max 125cc",
+      "name_bn": "টিভিএস ম্যাক্স ১২৫ সিসি ",
+      "brand": "TVS",
+      "price": "90,000/-",
+      "price_bn": "৯০,০০০৳",
+      "year": "2023",
+      "engine": "125 cc",
+      "mileage": "19,380",
+      "condition": "Used - Excellent",
+      "owner": "First owner",
+      "owner_bn": "প্রথম মালিক ",
+      "note": "Comillar number ",
+      "available": true
     }
   ]
 }
